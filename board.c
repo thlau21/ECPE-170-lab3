@@ -109,8 +109,10 @@ void shoot(struct Board* arr, char coords[]){
     int i = 0;
     int row = 0;
     int col = 0;
+    char colu = 'a';
     if(toupper(coords[i]) >= 65 && toupper(coords[i]) <= 90){
         col = toupper(coords[i]) - 65;
+        colu = toupper(coords[i]);
         i++;
     }
     while(coords[i] > 47 && coords[i] < 58){ //check if first input is number 
@@ -120,9 +122,9 @@ void shoot(struct Board* arr, char coords[]){
     }
     if(toupper(coords[i]) >= 65 && toupper(coords[i]) <= 90){
         col = toupper(coords[i]) - 65;
+        colu = toupper(coords[i]);
     }
 
-    //printf("\nrow: %d col: %d\n",row, col);
     if(row < 0 || row >= arr->size){
         printf("ERROR\n");
         return;
@@ -139,6 +141,8 @@ void shoot(struct Board* arr, char coords[]){
         printf("Already shot here\n");
     }
     else if(temp != '-'){
+
+        printf("\n%c%d is a hit\n\n",colu,row);
         arr->board[row][col] = 'h';
         arr->shots -= 1;
         handleSunkShip(arr);
@@ -148,6 +152,7 @@ void shoot(struct Board* arr, char coords[]){
         }
     }
     else{
+        printf("\n%c%d is a miss\n\n",colu,row);
         arr->board[row][col] = 'm';
         arr->shots -= 1;
     }

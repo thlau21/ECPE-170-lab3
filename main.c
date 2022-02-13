@@ -34,10 +34,12 @@ int main(int argc, char *argv[]){
             readInput(&board);
             if(board.gameOver == false){
                 printBoard(board,x);
+                printf("\n.....\n\n");
             }
         }
         if(board.gamesWon){
             printBoard(board,x);
+            printf("\n.....\n\n");
             gamesWon++;
         }
         clearBoard(&board);//reset board but not de-allocate memory
