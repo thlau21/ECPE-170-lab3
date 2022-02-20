@@ -82,40 +82,24 @@ void readFileShip(struct Board* arr, char* file){
                     tempShip->type = 'c';
                     tempShip->isDead = 0;
                     tempShip->length = 5;
-                    if(buffer[2] == 'r'){
-                        tempShip->isVertical = 0;
-                    }
-                    else{
-                        tempShip->isVertical = 1;
-                    }
-                    tempShip->col = toupper(buffer[4]) - 65;
-                    tempShip->row = buffer[5] - 49;
                 }
                 else if(buffer[0] == 'b'){
                     tempShip->type = 'b';
                     tempShip->isDead = 0;
                     tempShip->length = 4;
-                    if(buffer[2] == 'r'){
-                        tempShip->isVertical = 0;
-                    }
-                    else{
-                        tempShip->isVertical = 1;
-                    }
-                    tempShip->col = toupper(buffer[4]) - 65;
-                    tempShip->row = buffer[5] - 49;
                 }
-                if(buffer[0] == 'f'){
+                else if(buffer[0] == 'f'){
                     tempShip->type = 'f';
                     tempShip->isDead = 0;
                     tempShip->length = 2;
-                    if(buffer[2] == 'r'){
-                        tempShip->isVertical = 0;
-                    }
-                    else{
-                        tempShip->isVertical = 1;
-                    }
-                    tempShip->col = toupper(buffer[4]) - 65;
-                    tempShip->row = buffer[5] - 49;
+                }
+                tempShip->col = toupper(buffer[4]) - 65;
+                tempShip->row = buffer[5] - 49;
+                if(buffer[2] == 'r'){
+                    tempShip->isVertical = 1;
+                }
+                else{
+                    tempShip->isVertical = 0;
                 }
                 addShipToMap(arr, tempShip);
                 arr->Ships[i] = tempShip;
